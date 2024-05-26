@@ -156,7 +156,7 @@
 .ce-danger-button {
   background-color: #4a5162 !important;
   border: 1px solid #9a97fc !important;
-  color: #9a97fc !important;
+  color: #000000 !important;
 }
 
 .ce-autocomplete-close {

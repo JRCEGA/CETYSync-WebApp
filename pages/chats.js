@@ -1,3 +1,4 @@
+// chats.js
 import React, { useState, useEffect, useContext } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -12,7 +13,7 @@ const MessageFormSocial = dynamic(() =>
 );
 
 export default function Home() {
-  const { username, secret } = useContext(Context);
+  const { username, secret, logout } = useContext(Context);
   const [showChat, setShowChat] = useState(false);
   const router = useRouter();
 
@@ -23,10 +24,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (username === "" || secret === "") {
+    const storedUsername = localStorage.getItem("username");
+    const storedSecret = localStorage.getItem("secret");
+    if (!storedUsername || !storedSecret) {
       router.push("/");
+    } else {
+      setShowChat(true); // Muestra el chat si hay datos de sesión válidos
     }
-  }, [username, secret]);
+  }, [router]);
 
   if (!showChat) return <div />;
 
@@ -51,11 +56,14 @@ export default function Home() {
   return (
     <div className="background">
       <div className="shadow">
+        <button onClick={logout} style={{ position: 'absolute', top: '10px', right: '10px' }}>
+          Cerrar Sesión
+        </button>
         <ChatEngine
           height="calc(100vh - 212px)"
           projectID="0a02e733-4f9c-41fc-9d10-a51b816402f3"
-          userName={username}
-          userSecret={secret}
+          userName={username || localStorage.getItem("username")}
+          userSecret={secret || localStorage.getItem("secret")}
           renderNewMessageForm={() => <MessageFormSocial />}
           onNewMessage={(chatId, message) => handleNewMessage(chatId, message)}
           onMessage={(chatId, message) => handleReceiveMessage(message)}

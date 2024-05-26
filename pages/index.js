@@ -1,20 +1,27 @@
+// index.js
 import React, { useContext } from "react";
-
 import { Context } from "../context";
-
 import { useRouter } from "next/router";
-
 import axios from "axios";
 
 const Auth = () => {
   const { username, setUsername, secret, setSecret } = useContext(Context);
-
   const router = useRouter();
 
-  function onSubmit(e) {
+  const validateEmail = (email) => {
+    const domain = email.split('@')[1];
+    return domain === 'cetys.edu.mx';
+  };
+
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (username.length === 1 || secret.length === 1) return;
+
+    if (!validateEmail(username)) {
+      alert("Please use a valid CETYS email address.");
+      return;
+    }
 
     axios
       .put(
@@ -22,11 +29,13 @@ const Auth = () => {
         { username, secret },
         { headers: { "Private-Key": "f962106b-aabb-45ff-bc56-5baf9eb4cd8e" } }
       )
-
       .then((r) => {
+        // Almacenar datos en localStorage
+        localStorage.setItem("username", username);
+        localStorage.setItem("secret", secret);
         router.push("/chats");
       });
-  }
+  };
 
   return (
     <div className="background">
