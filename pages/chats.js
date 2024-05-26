@@ -51,14 +51,11 @@ export default function Home() {
       ...message,
       text: decryptedMessage,
     };
-  };
+  };  
 
   return (
     <div className="background">
       <div className="shadow">
-        <button onClick={logout} style={{ position: 'absolute', top: '10px', right: '10px' }}>
-          Cerrar Sesión
-        </button>
         <ChatEngine
           height="calc(100vh - 212px)"
           projectID="0a02e733-4f9c-41fc-9d10-a51b816402f3"
@@ -69,6 +66,9 @@ export default function Home() {
           onMessage={(chatId, message) => handleReceiveMessage(message)}
           offset={-7}
         />
+          <button onClick={logout} style={{ position: 'absolute', top: '10px', right: '10px' }}>
+            Cerrar Sesión
+          </button>        
       </div>
     </div>
   );

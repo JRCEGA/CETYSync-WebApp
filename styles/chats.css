@@ -3,9 +3,11 @@
 }
 
 /* Chat List */
+
 .ce-wrapper {
   background-color: #fbfaf5 !important;
   border: 2px solid black;
+  
 }
 
 .ce-chats-container {
@@ -134,6 +136,18 @@
   border-radius: 0px !important;
 }
 
+.ce-chat-title {
+  background-color: #fbfaf5 !important;
+}
+
+.anticon-setting {
+  color: #000000 !important;
+}
+
+.anticon-menu {
+  color: #000000 !important;
+}
+
 .ce-chat-title-form .ce-text-input {
   background-color: #fbfaf5;
   color: rgb(0, 0, 0);
@@ -145,8 +159,8 @@
 }
 
 #ce-options-drop-down {
-  background-color: #4a5162 !important;
-  color: white;
+  background-color: #fbfaf5 !important;
+  color: rgb(0, 0, 0);
 }
 
 .ce-person-text {
@@ -154,12 +168,45 @@
 }
 
 .ce-danger-button {
-  background-color: #4a5162 !important;
-  border: 1px solid #9a97fc !important;
+  background-color: #ffdd00 !important;
+  border: 1px solid #000000 !important;
   color: #000000 !important;
 }
 
 .ce-autocomplete-close {
   background-color: white !important;
   border-radius: 0px !important;
+}
+
+.anticon-close {
+  color: #000000;
+}
+
+div[style*="font-size: 24px;"][style*="font-weight: 600;"] {
+  color: #000000;
+}
+
+@media only screen and (max-width: 1000px) {
+  .background, .shadow, .ce-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+  }
+
+  .ce-chat-feed-column {
+    height: 100vh !important; 
+  }
+
+  .ce-chat-list-column {
+    height: 100vh !important; 
+  }
+
+  .ce-settings-column {
+    height: 100vh !important; 
+  }
+
 }
