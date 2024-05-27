@@ -42,6 +42,7 @@
   border-width: 0px;
   border-bottom: 2px solid #000000;
   color: rgb(0, 0, 0);
+  border-radius: 10px;
 }
 
 .text-input::placeholder {
@@ -57,6 +58,7 @@
   background-color: #000000;
   color: white;
   outline: none;
+  border-radius: 15px;
 }
 
 .submit-button::hover {

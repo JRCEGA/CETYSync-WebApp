@@ -67,7 +67,7 @@ export default function Home() {
           offset={-7}
         />
           <button onClick={logout} style={{ position: 'absolute', top: '10px', right: '10px' }}>
-            Cerrar Sesión
+            Sign Out
           </button>        
       </div>
     </div>
